@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Let's clone the source
-                    git branch: 'main', credentialsId: 'github_credentials_token', url: 'https://github.com/jmstechhome25/spring-boot-maven-generate-code-coverage-report-jacoco.git'
+                    git branch: 'main', credentialsId: 'git_credentials_new', url: 'https://github.com/pavanmech/spring-boot-maven-generate-code-coverage-report-jacoco.git'
                 }
             }
         }
@@ -43,18 +43,4 @@ pipeline {
             }
         }
     }
-    post {
-        failure {
-            script {
-                currentBuild.result = 'FAILURE'
-            }
-        }
 
-        always {
-            step([$class: 'Mailer',
-                notifyEveryUnstableBuild: true,
-                recipients: "jmstechhome24@gmail.com gompanarayanarao2@gmail.com",
-                sendToIndividuals: true])
-        }
-    }
-}
