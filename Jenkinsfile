@@ -12,11 +12,10 @@ pipeline {
             steps {
                 script {
                     // Let's clone the source
-                    git branch: 'main', credentialsId: 'git_credentials_new', url: 'https://github.com/pavanmech/spring-boot-maven-generate-code-coverage-report-jacoco.git'
+                    git branch: 'main', credentialsId: 'github_credentials_token', url: 'https://github.com/jmstechhome25/spring-boot-maven-generate-code-coverage-report-jacoco.git'
                 }
             }
         }
-
         stage('Build') {
             steps {
                 sh 'mvn clean package'
